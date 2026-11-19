@@ -32,7 +32,7 @@
 </header>
 
 <main class="narrow">
-  <div class="card">
+    <div class="card auth-card">
     <p class="eyebrow">Already on the register</p>
     <h2>Sign in with a code</h2>
     <p class="field-note">
@@ -49,6 +49,9 @@
         <button class="button primary" type="submit">Send code</button>
       </div>
     </form>
+        <p class="field-note" style="text-align:center; margin-top:18px">
+      New here? <a href="/register">Create an account</a>
+    </p>
 
     <form id="code-form" novalidate hidden>
       <p class="field-note" id="code-sent-note"></p>
@@ -59,6 +62,7 @@
       <div class="button-row" style="margin-top:16px">
         <button class="button primary" type="submit">Sign in</button>
         <button class="button secondary" type="button" id="code-back">Use a different email</button>
+                <button class="button secondary" type="button" id="code-resend">Resend code</button>
       </div>
     </form>
   </div>

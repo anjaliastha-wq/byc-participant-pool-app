@@ -202,6 +202,23 @@ async function handleVerifyCode(event) {
     showMessage("#signin-message", "error", text(error.message));
   }
 }
+async function resendCode() {
+  if (!pendingEmail) return backToEmail();
+  hideMessage("#signin-message");
+  try {
+    const result = await api("/api/login/request", { method: "POST", body: { email: pendingEmail } });
+    setText("#code-sent-note", result.message);
+    if (result.devCode) {
+      const note = $("#code-test-note");
+      if (note) {
+        note.textContent = `Test mode: your new code is ${result.devCode}. Earlier codes no longer work.`;
+        note.hidden = false;
+      }
+    }
+  } catch (error) {
+    showMessage("#signin-message", "error", text(error.message));
+  }
+}
 
 function backToEmail() {
   pendingEmail = "";
@@ -571,6 +588,7 @@ on("#register-form", "submit", handleRegister);
 on("#signin-form", "submit", handleSignIn);
 on("#code-form", "submit", handleVerifyCode);
 on("#code-back", "click", backToEmail);
+on("#code-resend", "click", resendCode);
 on("#refresh-portal", "click", refreshPortal);
 on("#signout", "click", signOut);
 on("#withdraw", "click", handleWithdraw);

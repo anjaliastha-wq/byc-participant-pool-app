@@ -5,7 +5,7 @@
    the lab deck, so that a student who saw the poster on a noticeboard arrives
    at a page that looks like the same lab.
    --------------------------------------------------------------------------- */
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700&display=swap");
 :root {
   --wine:      #7b2143;
   --wine-soft: #a35d76;
@@ -26,8 +26,9 @@
   --radius:    10px;
   --shadow:    0 1px 2px rgba(20, 20, 20, .06), 0 8px 24px rgba(20, 20, 20, .05);
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --serif: "Roboto Slab", Georgia, serif;
     --christ-purple: #3c3666;
-  --christ-gold:   #a29678;
+    --christ-gold:   #c9a227;
 }
 
 * { box-sizing: border-box; }
@@ -43,7 +44,7 @@ body {
   background: var(--shell);
 }
 
-h1, h2, h3, h4 { color: var(--ink); line-height: 1.25; margin: 0 0 .5em; font-weight: 600; }
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.25; margin: 0 0 .5em; font-weight: 600; font-family: var(--serif); }
 h1 { font-size: 2rem; letter-spacing: -.02em; }
 h2 { font-size: 1.35rem; letter-spacing: -.01em; }
 h3 { font-size: 1.05rem; }
@@ -123,6 +124,10 @@ main.narrow { max-width: 760px; }
 }
 .card > :last-child { margin-bottom: 0; }
 .card.flat { box-shadow: none; }
+.auth-card { max-width: 440px; margin: 24px auto 0; padding: 36px 32px; text-align: center; border-radius: 18px; }
+.auth-card form { text-align: left; }
+.auth-card .button-row { justify-content: center; }
+.auth-card .button.primary { width: 100%; }
 
 .eyebrow {
   font-size: .72rem;
@@ -136,7 +141,7 @@ main.narrow { max-width: 760px; }
 .hero {
   background: var(--ground);
   border: 1px solid var(--hair);
-  border-top: 3px solid var(--wine);
+  border-top: 3px solid var(--christ-gold);
   border-radius: var(--radius);
   padding: 40px 32px;
   margin-bottom: 22px;
@@ -176,7 +181,7 @@ ul.plain li { margin-bottom: .4em; }
   text-decoration: none;
   transition: background .12s ease, border-color .12s ease, color .12s ease;
 }
-.button.primary { background: var(--wine); color: #fff; }
+.button.primary { background: var(--christ-purple); color: #fff; }
 .button.primary:hover:not(:disabled) { background: #63182f; color: #fff; }
 .button.secondary { background: var(--ground); color: var(--ink); border-color: var(--hair); }
 .button.secondary:hover:not(:disabled) { border-color: var(--meta); color: var(--ink); }
@@ -430,3 +435,37 @@ td select { margin-top: 0; font-size: .85rem; padding: 5px 8px; min-width: 130px
   body { background: #fff; }
   .card, .table-wrap { box-shadow: none; border-color: #999; }
 }
+
+/* Footer in the CHRIST purple, so it matches the sign-in button */
+.site-footer { background: var(--christ-purple); color: #e9e6f2; border-top: none; }
+.site-footer strong, .site-footer a { color: #ffffff; }
+.site-footer a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Header links in the CHRIST purple, so the active page matches the buttons */
+.site-header nav a:hover { color: var(--christ-purple); }
+.site-header nav a[aria-current="page"] { color: var(--christ-purple); border-bottom-color: var(--christ-purple); }
+
+/* Active header link: bold and a thicker underline so it is easy to see */
+.site-header nav a[aria-current="page"] { font-weight: 700; border-bottom-width: 3px; }
+
+/* Active header link: same purple as the button, with a short, off-centre underline */
+.site-header nav a[aria-current="page"] { color: var(--christ-purple); font-weight: 700; border-bottom: none; position: relative; }
+.site-header nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -9px;
+  width: calc(100% + 14px);
+  height: 2px;
+  background: var(--christ-purple);
+  border-radius: 2px;
+}
+
+/* Register form: same rounded card as sign-in, wider for the longer form */
+.form-card { max-width: 640px; margin: 24px auto 0; padding: 36px 32px; border-radius: 18px; }
+
+/* Gold top edge on the Register form, to match the hero cards */
+.form-card { border-top: 3px solid var(--christ-gold); }
+
+/* Gold top edge on the sign-in card, to match the Register form */
+.auth-card { border-top: 3px solid var(--christ-gold); }
