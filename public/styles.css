@@ -469,3 +469,63 @@ td select { margin-top: 0; font-size: .85rem; padding: 5px 8px; min-width: 130px
 
 /* Gold top edge on the sign-in card, to match the Register form */
 .auth-card { border-top: 3px solid var(--christ-gold); }
+
+/* Your data page: collapsible sections, styled like the mockup */
+.privacy-eyebrow { text-align: center; color: var(--christ-purple); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 8px; }
+.privacy-title { text-align: center; font-size: 2rem; margin: 0 0 14px; }
+.privacy-intro { text-align: center; max-width: 60ch; margin: 0 auto 16px; }
+.privacy-list { max-width: 720px; margin: 0 auto; }
+.privacy-list details { border-bottom: 1px solid var(--hair); }
+.privacy-list summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 4px;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.privacy-list summary::-webkit-details-marker { display: none; }
+.privacy-list summary::after {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  border-right: 2.5px solid var(--christ-purple);
+  border-bottom: 2.5px solid var(--christ-purple);
+  transform: rotate(45deg);
+  transition: transform .15s ease;
+}
+.privacy-list details[open] summary { color: var(--christ-purple); }
+.privacy-list details[open] summary::after { transform: rotate(-135deg); }
+.privacy-list .panel { padding: 4px 4px 22px; }
+.privacy-list .panel p, .privacy-list .panel li { font-size: .95rem; }
+
+/* Home hero: no gold top line; BIDS in the CHRIST purple */
+.hero { border-top: 1px solid var(--hair); }
+.hero h1 .accent { color: var(--christ-purple); }
+
+/* Home page: one gold-topped frame around the whole landing section.
+   The boxes inside it keep a plain grey edge. */
+.landing-frame {
+  background: var(--ground);
+  border: 1px solid var(--hair);
+  border-top: 3px solid var(--christ-gold);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+.landing-frame .hero,
+.landing-frame .card {
+  border-top: 1px solid var(--hair);
+  box-shadow: none;
+}
+.landing-frame .hero { margin-bottom: 20px; }
+@media (max-width: 640px) {
+  .landing-frame { padding: 16px; }
+}
+
